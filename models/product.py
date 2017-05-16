@@ -12,7 +12,7 @@ class Product(models.Model):
             self.title = title
             #self.price = scrapper.get_price()
             self.category = scrapper.get_category()
-            #self.description = scrapper.get_description()
+            self.description = scrapper.get_description()
             self.numberOfUpdates = self.numberOfUpdates + 1
 
     _name = 'souq_scrapper.products'
