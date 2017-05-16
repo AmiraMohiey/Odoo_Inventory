@@ -1,6 +1,6 @@
 from lxml import html
 import requests
-
+import re
 
 class SouqFetcher:
     def __init__(self, page_url):
@@ -15,7 +15,12 @@ class SouqFetcher:
         return title
 
     def get_price(self):
-        pass
+        try:
+            reg = re.search("(\d*)(,*)(\d*\.\d*)",self.tree.xpath('//div[contains(@class,"price-container")]/h3')[0].text_content())
+            price = reg.group(1)+reg.group(3)
+        except:
+            price = ""
+        return price
 
     def get_category(self):
         pass
