@@ -21,5 +21,10 @@ class SouqFetcher:
         pass
 
     def get_description(self):
-        pass
+        try:
+            description = self.tree.xpath('//p[contains(@class,"DarkGrey")]')[0].text_content()
+           
+        except:
+            description=''
+        return description
 
