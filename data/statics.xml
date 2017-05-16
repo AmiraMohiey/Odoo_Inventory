@@ -6,42 +6,36 @@
             <field name="model">souq_scrapper.products</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
+                    <field name="title"/>
                     <field name="url"/>
                     <field name="numberOfUpdates"/>
                 </tree>
             </field>
         </record>
 
-
-        <record id="trainee_form_view" model="ir.ui.view">
+        <record id="products_form_view" model="ir.ui.view">
             <field name="name">Products Form View</field>
             <field name="model">souq_scrapper.products</field>
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="get_data"
-                                type="object"
-                                string="Activate"
-
-                        />
+                        <button name="fetch_data" type="object" string="Fetch Details"/>
                     </header>
                     <sheet>
                         <group>
-                            <field name="name"/>
                             <field name="url"/>
-                            <field name="category"/>
-                            <field name="title"/>
-                            <field name="price"/>
-                            <field name="description"/>
-                            <field name="image"/>
-                            <field name="numberOfUpdates"/>
+                            <field name="title" attrs="{'invisible':[('numberOfUpdates', '==', 0)]}"/>
+                            <field name="category" attrs="{'invisible':[('numberOfUpdates', '==', 0)]}"/>
+                            <field name="price" attrs="{'invisible':[('numberOfUpdates', '==', 0)]}"/>
+                            <field name="description" attrs="{'invisible':[('numberOfUpdates', '==', 0)]}"/>
+                            <field name="image" attrs="{'invisible':[('numberOfUpdates', '==', 0)]}"/>
+                            <field name="numberOfUpdates" attrs="{'invisible':[('numberOfUpdates', '==', 0)]}"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
-        
+
         <record id="products_action" model="ir.actions.act_window">
             <field name="name">Products</field>
             <field name="res_model">souq_scrapper.products</field>
