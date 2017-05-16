@@ -11,7 +11,7 @@ class Product(models.Model):
         if title != "":
             self.title = title
             #self.price = scrapper.get_price()
-            #self.category = scrapper.get_category()
+            self.category = scrapper.get_category()
             #self.description = scrapper.get_description()
             self.numberOfUpdates = self.numberOfUpdates + 1
 

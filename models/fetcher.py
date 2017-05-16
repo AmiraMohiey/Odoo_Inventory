@@ -18,7 +18,11 @@ class SouqFetcher:
         pass
 
     def get_category(self):
-        pass
+        try:
+            category = self.tree.xpath('//div[contains(@class,"product-title")]//span/a[2]')[0].text_content()
+        except:
+            category = ""
+        return category
 
     def get_description(self):
         pass
